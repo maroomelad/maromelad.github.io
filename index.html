@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>maromelad — Marcelino</title>
+    <meta name="description" content="Marcelino — developer. I build sites, programs and scripts.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">maromelad</a>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <p class="hero-kicker">Marcelino</p>
+            <h1>Every site I build<br>is a piece of art.</h1>
+            <p class="hero-sub">Developer, self-taught, still curious. I design and build websites, programs and scripts — and when I'm not coding, I'm probably gaming.</p>
+            <div class="hero-actions">
+                <a href="#projects" class="main-btn">View my work</a>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/maro.melad.714/" aria-label="Facebook"><i class="fa-brands fa-square-facebook"></i></a>
+                    <a href="https://www.instagram.com/imaromelad/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://github.com/maromeald" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="photo-frame">
+                <img src="IMG_6169.png" alt="Marcelino" width="1000" height="1333" loading="eager">
+            </div>
+            <div class="terminal" aria-hidden="true">
+                <div class="terminal-bar">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="terminal-title">about-me.js</span>
+                </div>
+                <pre class="terminal-body"><code id="typed-code"></code><span class="cursor">▌</span></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="section-label">Services</h2>
+        <div class="service-grid">
+            <div class="service code">
+                <i class="fa-solid fa-code"></i>
+                <h3>Programming</h3>
+                <p>I love programming — I design and build sites, programs and scripts from the ground up.</p>
+            </div>
+            <div class="service gaming">
+                <i class="fa-solid fa-gamepad"></i>
+                <h3>Gaming</h3>
+                <p>Gaming is how I unwind. It's the best way I know to have fun, and I never get tired of it.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <h2 class="section-label">Projects</h2>
+        <div class="file-list">
+            <a href="http://mousv.rf.gd/?i=1" class="file-row" target="_blank" rel="noopener">
+                <i class="fa-solid fa-folder"></i>
+                <span class="file-name">mousv</span>
+                <span class="file-open">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+            </a>
+            <a href="http://thelord.rf.gd/" class="file-row" target="_blank" rel="noopener">
+                <i class="fa-solid fa-folder"></i>
+                <span class="file-name">thelord</span>
+                <span class="file-open">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+            </a>
+            <a href="http://loginpuzzle.rf.gd/" class="file-row" target="_blank" rel="noopener">
+                <i class="fa-solid fa-folder"></i>
+                <span class="file-name">login</span>
+                <span class="file-open">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+            </a>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="section-label">Contact</h2>
+        <div class="prompt-box">
+            <p class="prompt-line"><span class="prompt-sign">guest@maromelad</span><span class="prompt-colon">:~$</span> contact --show</p>
+            <p class="prompt-output">mail&nbsp;&nbsp;&nbsp;<button class="copy-btn" data-copy="maromelad@gmail.com">maromelad@gmail.com <i class="fa-regular fa-copy"></i></button></p>
+            <p class="prompt-output">phone&nbsp;&nbsp;xxxxxxxxxxxxxxxxxx</p>
+        </div>
+    </section>
+
+    <script>
+        // Typing animation for the hero terminal — single orchestrated on-load moment
+        const codeLines = [
+            "const developer = {",
+            "  name: 'Marcelino',",
+            "  handle: 'maromelad',",
+            "  stack: ['HTML', 'CSS', 'JS'],",
+            "  hobby: 'gaming',",
+            "  status: 'building something new'",
+            "};"
+        ];
+        const target = document.getElementById('typed-code');
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function typeLines(lines) {
+            if (prefersReduced) {
+                target.textContent = lines.join('\n');
+                return;
+            }
+            let lineIndex = 0, charIndex = 0;
+            function step() {
+                if (lineIndex >= lines.length) return;
+                const currentLine = lines[lineIndex];
+                if (charIndex <= currentLine.length) {
+                    target.textContent = lines.slice(0, lineIndex).join('\n') +
+                        (lineIndex > 0 ? '\n' : '') + currentLine.slice(0, charIndex);
+                    charIndex++;
+                    setTimeout(step, 18 + Math.random() * 22);
+                } else {
+                    lineIndex++;
+                    charIndex = 0;
+                    setTimeout(step, 120);
+                }
+            }
+            step();
+        }
+        typeLines(codeLines);
+
+        // Copy email to clipboard
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                navigator.clipboard.writeText(btn.dataset.copy).then(() => {
+                    const original = btn.innerHTML;
+                    btn.innerHTML = 'copied <i class="fa-solid fa-check"></i>';
+                    setTimeout(() => btn.innerHTML = original, 1500);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
